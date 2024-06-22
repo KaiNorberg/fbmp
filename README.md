@@ -16,7 +16,7 @@ If you choose to make your own image loader, then you run into the problem that 
 
 ### Minimal need for processing
 
-The Framebuffer part of the name is important, since .fbmp uses a 8bpp ARGB pixel format, it is directly compatible with a lot of frame buffers, for example GOP frame buffers. Meaning there is no need for "parsing" or in any way processing the data contained within the file, it is intended to be used as is.
+The Framebuffer part of the name is important, since .fbmp uses a 32 bit ARGB pixel format, it is directly compatible with a lot of frame buffers, for example GOP frame buffers. Meaning there is no need for "parsing" or in any way processing the data contained within the file, it is intended to be used as is, which makes it very fast and efficient.
 
 ## Format
 
@@ -27,11 +27,23 @@ The Framebuffer part of the name is important, since .fbmp uses a 8bpp ARGB pixe
 | 0 | 4 | Magic number = 0x706D6266 |
 | 4 | 4 | Width in pixels |
 | 8 | 4 | Height in pixels |
-| 12 | 4 * width * height | Image data in ARGB 8bpp |
+| 12 | 4 * width * height | Image data in ARGB |
 
  \* Offset and Size is provided in bytes.
 
 </div>
+
+## Tools
+
+Below is a list of the currently available tools for .fbmp.
+
+### Gimp plugin
+
+Allows for loading and saving of .fbmp files via gimp.
+
+The plugin can be installed with the following steps.
+
+
 
 ## Example image loader in C
 
