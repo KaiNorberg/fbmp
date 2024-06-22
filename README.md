@@ -57,7 +57,7 @@ If you wish to uninstall the plugin just move back to the fbmp/tools/gimp direct
 
 ## Format
 
-The following describes the format of the .fbmp file, starting from the beginning of the file.
+The following describes the format of a .fbmp file, starting from the beginning of the file.
 
 <div align="center">
     
