@@ -18,18 +18,22 @@ If you choose to make your own image loader, then you run into the problem that 
 
 The Framebuffer part of the name is important, since .fbmp uses a 32 bit ARGB pixel format, it is directly compatible with a lot of frame buffers, for example GOP frame buffers. Meaning there is no need for "parsing" or in any way processing the data contained within the file, it is intended to be used as is, which makes it very fast and efficient.
 
-## Format
+### Image compression
+
+The .fbmp file format does not directly support compression, but it is also not needed, as testing has shown that compressing the files via tools like zip or tar results in file sizes that are the same if not smaller to that of a .png equivalent. Thus, if you really need compression, it's often better to simply compress a .fbmp file then use a "natively" compressed image file. Following is a comparison of the following image in different formats:
 
 <div align="center">
     
-| Offset | Size | Description |
-| -------- | ------- | -------  |
-| 0 | 4 | Magic number = 0x706D6266 |
-| 4 | 4 | Width in pixels |
-| 8 | 4 | Height in pixels |
-| 12 | 4 * width * height | Image data in ARGB |
-
- \* Offset and Size is provided in bytes.
+| Size | Format |
+| -------- | ------- |
+| 19.3 MB | .fbmp | 
+| 4.4 MB | .png | 
+| 4.4 MB | .png.tar.gz | 
+| 1.7 MB | .fbmp.tar.gz | 
+| 855 KB | .jpg | 
+| 845 KB | .jpg.tar.gz |
+    
+<img src="https://github.com/KaiNorberg/fbmp/assets/73393684/cccda9b6-129e-4bc6-bbac-c66b9da3a3e0" width="500">
 
 </div>
 
@@ -51,6 +55,23 @@ Done!
 
 If you wish to uninstall the plugin just move back to the fbmp/tools/gimp directory and run `make uninstall`.
 
+## Format
+
+The following describes the format of the .fbmp file, starting from the beginning of the file.
+
+<div align="center">
+    
+| Offset | Size | Description |
+| -------- | ------- | -------  |
+| 0 | 4 | Magic number = 0x706D6266 |
+| 4 | 4 | Width in pixels |
+| 8 | 4 | Height in pixels |
+| 12 | 4 * width * height | Image data in ARGB |
+
+ \* Offset and Size is provided in bytes.
+
+</div>
+ 
 ## Example image loader in C
 
 The following is a fully featured .fbmp loader in C:
