@@ -12,7 +12,7 @@ If you choose to use a third party library you may introduce a significant amoun
 
 ### Downsides of making your own loader
 
-If you choose to make your own image loader, then you run into the problem that making a fully featured parser for an image format as simple as .tga or .bmp still requires a significant amount of work. This usually results in programs with image loaders that are not fully featured, may not support all variants of a file format, or contain subtle bugs. For example .tga loaders may not support compression or different bits per pixel, which creates a frustrating situation of making sure that the image you are using is not just the right file format, but also that invisible "variables" within said file are correct for example bits per pixel.
+If you choose to make your own image loader, then you run into the problem that making a fully featured parser even for an image format as simple as .tga or .bmp still requires a significant amount of work. This usually results in programs with image loaders that are not fully featured, may not support all variants of a file format, or contain subtle bugs. For example custom made .tga loaders may not support compression or different bits per pixel, which creates a frustrating situation of making sure that the image you are using is not just the right file format, but also that invisible "variables" within said file are correct for example bits per pixel.
 
 ### Minimal need for processing
 
