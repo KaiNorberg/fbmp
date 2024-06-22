@@ -1,1 +1,1 @@
-# fbmp
+# Framebuffer BitMaP or .fbmp
