@@ -82,7 +82,7 @@ int main()
         // Handle corrupt file
     }
 
-    // Do stuff with file
+    // Do stuff with the image
 
     printf("Magic: 0x%08x Width: 0x%08x Height: 0x%08x First Pixel: 0x%08x\n",
         image->magic, image->width, image->height, image->data[0]);
