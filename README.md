@@ -18,6 +18,21 @@ If you choose to make your own image loader, then you run into the problem that 
 
 The Framebuffer part of the name is important, since .fbmp uses a 8bpp ARGB pixel format, it is directly compatible with a lot of frame buffers, for example GOP frame buffers. Meaning there is no need for "parsing" or in any way processing the data contained within the file, it is intended to be used as is.
 
+## Format
+
+<div align="center">
+    
+| Offset | Size | Description |
+| -------- | ------- | -------  |
+| 0 | 4 | Magic number = 0x706D6266 |
+| 4 | 4 | Width in pixels |
+| 8 | 4 | Height in pixels |
+| 12 | 4 * width * height | Image data in ARGB 8bpp |
+
+ \* Offset and Size is provided in bytes.
+
+</div>
+
 ## Example image loader in C
 
 The following is a fully featured .fbmp loader in C:
