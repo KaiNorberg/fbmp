@@ -1,4 +1,4 @@
-#include <arpa/inet.h>
+#include <endian.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -95,13 +95,8 @@ static void run(const gchar* name, gint nparams, const GimpParam* param, gint* n
             {
                 uint32_t data;
                 fread(&data, sizeof(uint32_t), 1, file);
-                uint32_t alpha = ((data >> 24) & 0xFF);
-                uint32_t red = ((data >> 16) & 0xFF);
-                uint32_t green = ((data >> 8) & 0xFF);
-                uint32_t blue = ((data >> 0) & 0xFF);
 
-                uint32_t pixel = (red << 24) | (green << 16) | (blue << 8) | (alpha << 0);
-
+                uint32_t pixel = htobe32((data << 8) | ((data >> 24) & 0xFF));
                 buffer[x + y * width] = pixel;
             }
         }
@@ -122,13 +117,13 @@ static void run(const gchar* name, gint nparams, const GimpParam* param, gint* n
     {
         GimpDrawable* drawable = gimp_drawable_get(param[2].data.d_int32);
         GimpImageType imageType = gimp_drawable_type(drawable->drawable_id);
-        if (imageType != GIMP_RGB_IMAGE && imageType != GIMP_RGBA_IMAGE)
+        if (imageType != GIMP_RGBA_IMAGE)
         {
             *nResults = 2;
             results[0].type = GIMP_PDB_STATUS;
             results[0].data.d_status = GIMP_PDB_EXECUTION_ERROR;
             results[1].type = GIMP_PDB_STRING;
-            results[1].data.d_string = "Image must be RGB/RGBA.";
+            results[1].data.d_string = "Image must be RGBA.";
             return;
         }
 
@@ -146,37 +141,14 @@ static void run(const gchar* name, gint nparams, const GimpParam* param, gint* n
         guchar* buffer = malloc(drawable->width * drawable->height * 4);
         gimp_pixel_rgn_get_rect(&pixelRegion, buffer, 0, 0, drawable->width, drawable->height);
 
-        if (imageType == GIMP_RGBA_IMAGE)
+        for (size_t y = 0; y < drawable->height; y++)
         {
-            for (size_t y = 0; y < drawable->height; y++)
+            for (size_t x = 0; x < drawable->width; x++)
             {
-                for (size_t x = 0; x < drawable->width; x++)
-                {
-                    uint32_t data = ((uint32_t*)buffer)[x + y * drawable->width];
-                    uint32_t alpha = ((data >> 0) & 0xFF);
-                    uint32_t red = ((data >> 24) & 0xFF);
-                    uint32_t green = ((data >> 16) & 0xFF);
-                    uint32_t blue = ((data >> 8) & 0xFF);
+                uint32_t data = ((uint32_t*)buffer)[x + y * drawable->width];
 
-                    uint32_t pixel = (alpha << 24) | (red << 16) | (green << 8) | (blue << 0);
-                    fwrite(&pixel, sizeof(uint32_t), 1, file);
-                }
-            }
-        }
-        else if (imageType == GIMP_RGB_IMAGE)
-        {
-            for (size_t y = 0; y < drawable->height; y++)
-            {
-                for (size_t x = 0; x < drawable->width; x++)
-                {
-                    uint32_t alpha = 0xFF;
-                    uint32_t red = buffer[x + y * drawable->width + 0];
-                    uint32_t green = buffer[x + y * drawable->width + 1];
-                    uint32_t blue = buffer[x + y * drawable->width + 2];
-
-                    uint32_t pixel = (alpha << 24) | (red << 16) | (green << 8) | (blue << 0);
-                    fwrite(&pixel, sizeof(uint32_t), 1, file);
-                }
+                uint32_t pixel = htobe32((data << 8) | ((data >> 24) & 0xFF));
+                fwrite(&pixel, sizeof(uint32_t), 1, file);
             }
         }
 
