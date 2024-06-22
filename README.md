@@ -1,6 +1,6 @@
 # Framebuffer BitMaP or .fbmp [![License](https://img.shields.io/badge/licence-MIT-green)](https://github.com/KaiNorberg/fbmp/blob/main/LICENSE)
 
-The Framebuffer BitMaP format is designed to be as simple as possible, and to be directly compatible with GOP framebuffers.
+The Framebuffer BitMaP format is designed to be as simple as possible, and to be directly compatible with GOP framebuffers. The point is not to be revolutionary but to provide a simple standard and a list of tools for the standard.
 
 ## Why does this exist?
 
