@@ -20,7 +20,7 @@ The Framebuffer part of the name is important, since .fbmp uses a 32 bit ARGB pi
 
 ### Image compression
 
-The .fbmp file format does not directly support compression, but it is also not needed, as testing has shown that compressing the files via tools like zip or tar results in file sizes that are the same if not smaller to that of a .png equivalent. Thus, if you really need compression, it's often better to simply compress a .fbmp file then use a "natively" compressed image file. Following is a comparison of the following 1406x1384 image in different formats:
+The .fbmp file format does not directly support compression, but it is also not needed, as testing has shown that compressing the files via tools like zip or gz results in file sizes that are the same if not smaller to that of a .png equivalent. Thus, if you really need compression, it's often better to simply compress a .fbmp file then use a "natively" compressed image file. Following is a comparison of the following 1406x1384 image in different formats:
 
 <div align="center">
 
