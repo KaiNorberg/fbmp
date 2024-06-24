@@ -55,6 +55,10 @@ Done!
 
 If you wish to uninstall the plugin just move back to the fbmp/tools/gimp directory and run `make uninstall`.
 
+## Implementations
+
+* [mango](https://github.com/t0rakka/mango) image loader (for... reasons they call it .fpng not .fbmp)
+
 ## Format
 
 The image data is stored in BGRA byte order. When read as a 32-bit integer, because the format uses little-endian, it will appear as ARGB.
