@@ -57,19 +57,19 @@ If you wish to uninstall the plugin just move back to the fbmp/tools/gimp direct
 
 ## Format
 
-The following describes the format of a .fbmp file, starting from the beginning of the file.
+The following describes the format of a .fbmp file, starting from the beginning of the file. An example image can also be found in the example folder.
 
 <div align="center">
-    
+
 | Offset | Size | Description |
 | -------- | ------- | -------  |
 | 0 | 4 | Magic number = 0x706D6266 |
 | 4 | 4 | Width in pixels |
 | 8 | 4 | Height in pixels |
-| 12 | 4 * width * height | Image data in ARGB |
+| 12 | 4 * width * height | Image data in BGRA |
 
- \* Offset and Size is provided in bytes.
-
+\* Offset and Size is provided in bytes.
+\* All data is stored in little-endian for compatability with x86.
 </div>
  
 ## Example image loader in C
