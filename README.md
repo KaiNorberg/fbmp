@@ -16,7 +16,7 @@ If you choose to make your own image loader, then you run into the problem that 
 
 ### Minimal need for processing
 
-The Framebuffer part of the name is important, since .fbmp uses a 32 bit BGRA pixel format, it is directly compatible with a lot of frame buffers, for example GOP frame buffers. Meaning there is no need for "parsing" or in any way processing the data contained within the file, it is intended to be used as is, which makes it very fast and efficient.
+The Framebuffer part of the name is important, since .fbmp uses a 32 bit ARGB pixel format, it is directly compatible with a lot of frame buffers, for example GOP frame buffers. Meaning there is no need for "parsing" or in any way processing the data contained within the file, it is intended to be used as is, which makes it very fast and efficient.
 
 ### Image compression
 
