@@ -66,9 +66,9 @@ The following describes the format of a .fbmp file, starting from the beginning 
 | Offset | Size | Description |
 | -------- | ------- | -------  |
 | 0 | 4 | Magic number = 0x706D6266 |
-| 4 | 4 | Width in pixels |
-| 8 | 4 | Height in pixels |
-| 12 | 4 * width * height | Image data |
+| 4 | 4 | Unsigned width in pixels |
+| 8 | 4 | Unsigned height in pixels |
+| 12 | 4 * width * height | Image data, row-major |
 
 \* Offset and Size is provided in bytes.
 </div>
