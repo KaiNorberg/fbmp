@@ -48,8 +48,11 @@ Allows for loading and saving of .fbmp files via gimp.
 The plugin can be installed with the following steps.
 
 1. Clone (download) this repository, you can use the Code button at the top left of the screen, or if you have git installed use the following command `git clone --recursive https://github.com/KaiNorberg/fbmp`.
-2. Move into the fbmp/tools/gimp directory with the following command `cd fbmp/tools/gimp`
-2. Run the `make all install` command to both build and install the plugin.
+2. Figure out which version of gimp you have, if your not sure you most likely have gimp-3.
+3. Move into the fbmp/tools/gimp-* directory with the following command `cd fbmp/tools/gimp-*`
+4. Run the `make all install` command to both build and install the plugin.
+
+* The version of gimp you have, either 2 or 3.
 
 Done! 
 

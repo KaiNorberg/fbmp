@@ -52,4 +52,5 @@ Mkfile.old
 dkms.conf
 
 # Other
-tools/gimp/fbmp
+tools/gimp-2/fbmp
+tools/gimp-3/fbmp
