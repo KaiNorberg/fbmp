@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #define PROC_LOAD "plug-in-fbmp-load"
-#define PROC_EXPORT "plug-in-fbmp-save"
+#define PROC_EXPORT "plug-in-fbmp-export"
 
 #define FBMP_MAGIC 0x706D6266
 
@@ -153,14 +153,15 @@ static GimpProcedure* fbmp_create_procedure(GimpPlugIn* plug_in, const gchar* na
     gimp_procedure_set_documentation(procedure, "Plugin for Framebuffer BitMaP files", NULL, NULL);
     gimp_procedure_set_attribution(procedure, "Kai Norberg", "Kai Norberg", "2025");
 
+    gimp_file_procedure_set_priority(fileProc, 0);      
+    gimp_file_procedure_set_magics(fileProc, "0,string,fbmp");
+    gimp_file_procedure_set_mime_types(fileProc, "image/fbmp");
+
     if (g_strcmp0(name, PROC_LOAD) == 0)
     {
         // For some reason adding file extensions to the export proc causes gimp to think the export proc is a load proc???
-        gimp_procedure_add_menu_path(procedure, "<Image>/File/Open");        
-        gimp_file_procedure_set_magics(fileProc, "0,string,fbmp");
-        gimp_file_procedure_set_mime_types(fileProc, "image/fbmp");
+        gimp_procedure_add_menu_path(procedure, "<Image>/File/Open");
         gimp_file_procedure_set_extensions(fileProc, "fbmp");
-        gimp_file_procedure_set_priority(fileProc, 0);
     }
     else if (g_strcmp0(name, PROC_EXPORT) == 0)
     {
