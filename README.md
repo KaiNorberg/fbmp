@@ -60,7 +60,7 @@ If you wish to uninstall the plugin just move back to the fbmp/tools/gimp direct
 
 ## Implementations
 
-* [PatchworkOS](https://github.com/KaiNorberg/PatchworkOS) hobbyist operating system
+* [PatchworkOS](https://github.com/KaiNorberg/PatchworkOS) Hobbyist OS
 * [mango](https://github.com/t0rakka/mango) image loader (for... reasons they call it .fpng not .fbmp)
 
 ## Format
