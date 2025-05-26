@@ -58,6 +58,18 @@ Done!
 
 If you wish to uninstall the plugin just move back to the fbmp/tools/gimp directory and run `make uninstall`.
 
+### image2fbmp
+
+A python script that allows for converting various images formats to .fbmp.
+
+The script can be used by following these steps.
+
+1. Clone (download) this repository, you can use the Code button at the top left of the screen, or if you have git installed use the following command `git clone --recursive https://github.com/KaiNorberg/fbmp`.
+2. Move into the fbmp/tools/image2fbmp directory with the following command `cd fbmp/tools/image2fbmp`
+3. Use a command in the format `python image2fbmp.py input.jpg output.fbmp`.
+
+Done!
+
 ## Implementations
 
 * [PatchworkOS](https://github.com/KaiNorberg/PatchworkOS) hobbyist operating system
